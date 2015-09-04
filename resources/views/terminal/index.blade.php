@@ -16,7 +16,7 @@
 
 
 <section class="content">
-	<div class="row">
+	<div class="row menu">
 		<div class="col-xs-12">
 			{!! link_to_route('terminal.create','New Terminal',array(),['class' => 'btn btn-primary']) !!}
 		</div>

@@ -46,6 +46,8 @@
       $(function () {
         var table = $('#example2').DataTable({
           "aaSorting": [],
+          "searching": false,
+          "info":     false,
           processing: true,
           serverSide: true,
           ajax: 'anydata',
