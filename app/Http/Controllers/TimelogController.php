@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Employee;
 use Session;
+use App\EmployeeTime;
+use App\Terminal;
+use App\Employee;
+use Carbon\Carbon;
 
-class EmployeesController extends Controller
+class TimelogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +21,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
-        return view('employee.index',compact('employees'));
+        //
     }
 
     /**
@@ -29,7 +31,7 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        //
     }
 
     /**
@@ -40,26 +42,28 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'first_name' => 'required|max:100',
-            'middle_name' => 'required|max:100',
-            'last_name' => 'required|max:100',
-            'emp_id' => 'required|max:100',
-            'card_no' => 'required|max:100'
-        ]);
+        $token = $request->token;
+        $sensortype = $request->sensortype;
+        $card_no = $request->cardno;
+        $status = 0;
+        // check if valid terminal
+        $terminal = Terminal::where('token',$token)->where('active',1)->first();
 
-        $employee = new Employee;
-        $employee->first_name = $request->first_name;
-        $employee->middle_name = $request->middle_name;
-        $employee->last_name = $request->last_name;
-        $employee->emp_id = $request->emp_id;
-        $employee->card_no = $request->card_no;
-        $employee->active = 1;
-        $employee->save();
+        if(!empty($terminal)){
+            $employee = Employee::where('card_no',$card_no)->where('active',1)->first();
+            
+            if(!empty( $employee)){
+                $timelog = new EmployeeTime;
+                $timelog->employee_id = $employee->id;
+                $timelog->terminal_id = $terminal->id;
+                $timelog->timestamp = Carbon::now();
+                $timelog->sensortype_id = $sensortype;
+                $timelog->save();
+                $status = 1;
+            }
+        }
 
-        Session::flash('flash_message', 'Terminal successfully added!');
-
-        return redirect()->route("employee.index");
+        return response()->json(['status' => $status]);
     }
 
     /**

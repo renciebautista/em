@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Employee;
-use Session;
+use Datatables;
+use App\EmployeeTime;
 
-class EmployeesController extends Controller
+class EmployeelogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,20 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
-        return view('employee.index',compact('employees'));
+        return view('employeelog.index');
+    }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anydata()
+    {
+        // $records = EmployeeTime::getLastTen();
+        // dd($records);
+        return Datatables::of(EmployeeTime::getLastTen())
+            ->make(true);
     }
 
     /**
@@ -29,7 +41,7 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        //
     }
 
     /**
@@ -40,26 +52,7 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'first_name' => 'required|max:100',
-            'middle_name' => 'required|max:100',
-            'last_name' => 'required|max:100',
-            'emp_id' => 'required|max:100',
-            'card_no' => 'required|max:100'
-        ]);
-
-        $employee = new Employee;
-        $employee->first_name = $request->first_name;
-        $employee->middle_name = $request->middle_name;
-        $employee->last_name = $request->last_name;
-        $employee->emp_id = $request->emp_id;
-        $employee->card_no = $request->card_no;
-        $employee->active = 1;
-        $employee->save();
-
-        Session::flash('flash_message', 'Terminal successfully added!');
-
-        return redirect()->route("employee.index");
+        //
     }
 
     /**

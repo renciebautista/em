@@ -66,6 +66,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset ("/bower_components/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js") }}"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="{{ asset ("/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js") }}"></script>
+
+    <!-- DataTables -->
+    <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js") }}"></script>
+    <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
+
     <!-- AdminLTE App -->
     <script src="{{ asset ("/bower_components/AdminLTE/dist/js/app.min.js") }}"></script>
 
@@ -73,5 +78,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
          Both of these plugins are recommended to enhance the
          user experience. Slimscroll is required when using the
          fixed layout. -->
+
+    @yield('scripts')
+      
+    @section('page-script')
+
+    @show
+
+    
   </body>
 </html>

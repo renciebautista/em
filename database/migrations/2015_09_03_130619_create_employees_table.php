@@ -19,7 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name');
             $table->string('emp_id');
             $table->string('card_no');
-            $table->boolean('status');
+            $table->boolean('active');
             $table->timestamps();
         });
     }

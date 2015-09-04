@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Singapore',
 
     /*
     |--------------------------------------------------------------------------
@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         'Collective\Html\HtmlServiceProvider',
+        'yajra\Datatables\DatatablesServiceProvider'
 
     ],
 
@@ -197,6 +198,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
+        'Datatables' => yajra\Datatables\Datatables::class,
+        
 
     ],
 
