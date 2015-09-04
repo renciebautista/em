@@ -2,5 +2,6 @@
 	RewriteEngine on
 	RewriteCond %{REQUEST_URI} !^public
 	RewriteRule ^(.*)$ public/$1 [L]
-
+	# Use PHP 5.5 as default
+	AddHandler application/x-httpd-php55 .php
 </IfModule>
