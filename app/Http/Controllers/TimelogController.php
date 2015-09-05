@@ -42,9 +42,9 @@ class TimelogController extends Controller
      */
     public function store(Request $request)
     {
-        $token = $request->token;
-        $sensortype = $request->sensortype;
-        $card_no = $request->cardno;
+        $token = $request->t;
+        $sensortype = $request->s;
+        $card_no = $request->c;
         $status = 0;
         // check if valid terminal
         $terminal = Terminal::where('token',$token)->where('active',1)->first();

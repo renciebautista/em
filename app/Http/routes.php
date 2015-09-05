@@ -14,7 +14,8 @@
 
 
 Route::get('/', function () {
-    return view('admin_template');
+    echo strlen("t=c190a50aa8f292b847ba6627ee888c71&s=1&c=1234567890");
+    // return view('admin_template'); 
 });
 
 Route::resource('terminal', 'TerminalsController');
