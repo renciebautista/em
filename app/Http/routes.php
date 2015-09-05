@@ -14,17 +14,23 @@
 
 
 Route::get('/', function () {
-    echo strlen("t=c190a50aa8f292b847ba6627ee888c71&s=1&c=1234567890");
-    // return view('admin_template'); 
+    // echo strlen("t=c190a50aa8f292b847ba6627ee888c71&s=1&c=1234567890");
+    return view('admin_template'); 
 });
 
 Route::resource('terminal', 'TerminalsController');
 Route::resource('location', 'LocationsController');
 Route::resource('employee', 'EmployeesController');
-Route::resource('timelog', 'TimelogController');
+
 
 Route::get('anydata', 'EmployeelogController@anydata');
 Route::resource('employeelog', 'EmployeelogController');
+
+
+Route::group(array('prefix' => 'api'), function()
+{
+   Route::post('timelog', 'TimelogController@store');
+});//
 
 use App\EmployeeTime;
 use App\Terminal;

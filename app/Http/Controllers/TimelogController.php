@@ -63,7 +63,7 @@ class TimelogController extends Controller
             }
         }
 
-        return response()->json(['status' => $status]);
+        return response()->json(['status' => $status],200);
     }
 
     /**
