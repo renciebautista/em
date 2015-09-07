@@ -13,6 +13,6 @@ class VerifyCsrfToken extends BaseVerifier
      */
     // protected $except = array('api/timelog');
      protected $except = [
-        //
+        'api/timelog'
     ];
 }
