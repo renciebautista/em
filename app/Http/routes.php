@@ -32,6 +32,7 @@ Route::group(array('prefix' => 'api'), function()
    Route::post('timelog', 'TimelogController@store');
 });//
 
+
 use App\EmployeeTime;
 use App\Terminal;
 use App\Employee;
