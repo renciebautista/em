@@ -32,6 +32,7 @@
           <li>{!! link_to_route('terminal.index','Terminals') !!}</li>
           <li>{!! link_to_route('location.index','Locations') !!}</li>
           <li>{!! link_to_route('employee.index','Employees') !!}</li>
+          <li>{!! link_to_route('iot.index','IoT Logs') !!}</li>
         </ul>
       </li>
     </ul><!-- /.sidebar-menu -->
