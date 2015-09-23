@@ -24,6 +24,7 @@
         <a href="#"><i class="fa fa-link"></i> <span>Report</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li>{!! link_to_route('employeelog.index','Employee Logs') !!}</li>
+          <li>{!! link_to_route('iot.index','IOT Dashboard') !!}</li>
         </ul>
       </li>
       <li class="treeview">
@@ -32,9 +33,7 @@
           <li>{!! link_to_route('terminal.index','Terminals') !!}</li>
           <li>{!! link_to_route('location.index','Locations') !!}</li>
           <li>{!! link_to_route('employee.index','Employees') !!}</li>
-        </ul>
-      </li>
-    </ul><!-- /.sidebar-menu -->
+
   </section>
   <!-- /.sidebar -->
 </aside>

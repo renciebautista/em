@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Session;
+use App\IotLog;
 
 class IotController extends Controller
 {
@@ -16,7 +18,7 @@ class IotController extends Controller
      */
     public function index()
     {
-        //
+        return view('iot.index');
     }
 
     /**
@@ -37,7 +39,16 @@ class IotController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $type = $request->t;
+        $value = $request->v;
+        $status = 0;
+        
+        $log = new IotLog;
+        $log->type_id = $type;
+        $log->value = $value;
+        $log->save();
+
+        return response()->json(['status' => 'ok'],200);
     }
 
     /**

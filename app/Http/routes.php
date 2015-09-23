@@ -26,10 +26,12 @@ Route::resource('employee', 'EmployeesController');
 Route::get('anydata', 'EmployeelogController@anydata');
 Route::resource('employeelog', 'EmployeelogController');
 
+Route::get('iot', ['as' => 'iot.index', 'uses' => 'IotController@index']);
 
 Route::group(array('prefix' => 'api'), function()
 {
    Route::post('timelog', 'TimelogController@store');
+   Route::post('iot', 'IotController@store');
 });//
 
 
