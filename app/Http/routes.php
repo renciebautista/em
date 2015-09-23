@@ -28,17 +28,29 @@ Route::resource('employeelog', 'EmployeelogController');
 
 Route::get('iot', ['as' => 'iot.index', 'uses' => 'IotController@index']);
 
+
+
 Route::group(array('prefix' => 'api'), function()
 {
    Route::post('timelog', 'TimelogController@store');
    Route::post('iot', 'IotController@store');
+
+   Route::get('iotlog/{id}', 'IotController@show');
 });//
 
 
 use App\EmployeeTime;
 use App\Terminal;
 use App\Employee;
+use App\IotLog;
 
 Route::get('deletelog',function(){
 	DB::table('employee_times')->truncate();
 });
+
+Route::get('test', function(){
+	$log = new IotLog;
+        $log->type_id = 1;
+        $log->value = "1.001";
+        $log->save();
+    });

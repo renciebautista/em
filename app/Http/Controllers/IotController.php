@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Session;
+use DB;
 use App\IotLog;
 
 class IotController extends Controller
@@ -57,9 +58,22 @@ class IotController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $days = $request->days;
+
+       // $range = CarbonCarbon::now()->subDays($days);
+
+        $stats = DB::table('iot_logs')
+            //->where('created_at', '>=', $range)
+            // ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get([
+            DB::raw('time(created_at) as date'),
+            'value'
+        ]);
+
+      return $stats;
     }
 
     /**
