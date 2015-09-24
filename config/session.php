@@ -135,8 +135,8 @@ return [
     |
     */
 
-    // 'domain' => 'em.villtech-asia.com',
-    'domain' => null,
+    'domain' => 'em.villtech-asia.com',
+    // 'domain' => null,
 
     /*
     |--------------------------------------------------------------------------

@@ -64,12 +64,16 @@ class IotController extends Controller
 
        // $range = CarbonCarbon::now()->subDays($days);
 
+        $date = new \DateTime;
+        $date->modify('-24 hours');
+        $formatted_date = $date->format('Y-m-d H:i:s');
+
         $stats = DB::table('iot_logs')
-            //->where('created_at', '>=', $range)
+            ->where('created_at', '>=', $formatted_date)
             // ->groupBy('date')
             ->orderBy('date', 'ASC')
             ->get([
-            DB::raw('time(created_at) as date'),
+            DB::raw('UNIX_TIMESTAMP(created_at) as date'),
             'value'
         ]);
 
