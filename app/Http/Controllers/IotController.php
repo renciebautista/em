@@ -72,7 +72,7 @@ class IotController extends Controller
             // ->where('created_at', '>=', $formatted_date)
             // ->groupBy('date')
             ->orderBy('date', 'ASC')
-            ->take(100)
+            ->take(10)
             ->get([
             DB::raw('UNIX_TIMESTAMP(created_at) as date'),
             'value'
