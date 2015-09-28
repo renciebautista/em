@@ -69,9 +69,10 @@ class IotController extends Controller
         $formatted_date = $date->format('Y-m-d H:i:s');
 
         $stats = DB::table('iot_logs')
-            ->where('created_at', '>=', $formatted_date)
+            // ->where('created_at', '>=', $formatted_date)
             // ->groupBy('date')
             ->orderBy('date', 'ASC')
+            ->take(200)
             ->get([
             DB::raw('UNIX_TIMESTAMP(created_at) as date'),
             'value'
