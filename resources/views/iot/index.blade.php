@@ -65,7 +65,11 @@
         });
 
         // Fire off an AJAX request to load the data
-        $.ajax({
+        
+
+         
+        setInterval( function () {
+            $.ajax({
             type: "GET",
             dataType: 'json',
             url: "/api/iotlog/1", // This is the URL to the API
@@ -79,7 +83,7 @@
             // If there is no communication between the server, show an error
             alert( "error occured" );
           });
-
+        }, 5000 );
         
       });
     </script>
