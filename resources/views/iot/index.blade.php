@@ -7,7 +7,7 @@
     <h1>IOT Dashboard</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Report</a></li>
-        <li class="active">IOT Dashbaord</li>
+        <li class="active">IoT Dashboard</li>
     </ol>
     @include('shared.notifications')
 </section>
