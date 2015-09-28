@@ -58,6 +58,7 @@
           xkey: 'date',
           ykeys: ['value'],
           labels: ['Temp'],
+          xLabels: ['hour']
           dateFormat: function (x) { return new Date(x).toDateString(); },
           lineColors: ['#3c8dbc'],
           hideHover: 'auto'
