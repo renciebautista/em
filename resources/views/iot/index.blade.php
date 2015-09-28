@@ -65,9 +65,22 @@
         });
 
         // Fire off an AJAX request to load the data
-        
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "/api/iotlog/1", // This is the URL to the API
+            data: { days: 7 } // Passing a parameter to the API to specify number of days
+          })
+          .done(function( data ) {
+            // When the response to the AJAX request comes back render the chart with new data
+            line.setData(data);
+          })
+          .fail(function() {
+            // If there is no communication between the server, show an error
+            alert( "error occured" );
+          });
 
-         
+
         setInterval( function () {
             $.ajax({
             type: "GET",
@@ -83,7 +96,7 @@
             // If there is no communication between the server, show an error
             alert( "error occured" );
           });
-        }, 5000 );
+        }, 15000 );
         
       });
     </script>
