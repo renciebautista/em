@@ -60,18 +60,18 @@ class IotController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $days = $request->days;
+        // $days = $request->days;
 
        // $range = CarbonCarbon::now()->subDays($days);
 
-        $date = new \DateTime;
-        $date->modify('-24 hours');
-        $formatted_date = $date->format('Y-m-d H:i:s');
+        // $date = new \DateTime;
+        //$date->modify('-24 hours');
+        //$formatted_date = $date->format('Y-m-d H:i:s');
 
         $stats = DB::table('iot_logs')
             // ->where('created_at', '>=', $formatted_date)
             // ->groupBy('date')
-            ->orderBy('date')
+            ->orderBy('created_at','desc')
             ->take(200)
             ->get([
             //DB::raw('UNIX_TIMESTAMP(created_at) as date'),
