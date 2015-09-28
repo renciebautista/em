@@ -74,7 +74,9 @@ class IotController extends Controller
             ->orderBy('date', 'ASC')
             ->take(50)
             ->get([
-            DB::raw('UNIX_TIMESTAMP(created_at) as date'),
+            //DB::raw('UNIX_TIMESTAMP(created_at) as date'),
+            //'value'
+            DB::raw('created_at as date'),
             'value'
         ]);
 
