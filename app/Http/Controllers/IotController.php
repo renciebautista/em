@@ -70,7 +70,7 @@ class IotController extends Controller
 
         $stats = DB::table('iot_logs')
             // ->where('created_at', '>=', $formatted_date)
-            // ->groupBy('date')
+            ->groupBy('created_at')
             ->orderBy('created_at','desc')
             ->take(200)
             ->get([
